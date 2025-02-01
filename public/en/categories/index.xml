@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Example</title>
+    <link>http://localhost:1313/website/en/categories/</link>
+    <description>Recent Posts in Categories on Example</description>
+    <generator>Hugo 0.142.0</generator>
+    <language>en-GB</language>
+    <managingEditor>erika.soans@gmail.com (Erika Soans)</managingEditor>
+    <webMaster>erika.soans@gmail.com (Erika Soans)</webMaster>
+    <copyright>Copyright (c) Foxxi</copyright>
+    <lastBuildDate>Sat, 01 Feb 2025 22:04:53 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/website/en/categories/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

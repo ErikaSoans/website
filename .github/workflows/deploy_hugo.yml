@@ -1,0 +1,73 @@
+name: Deploy Hugo Site to Github Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    #Step 1 check the repository 
+    -name: checkout code 
+     uses: actions/checkout@v2
+
+    #step 2 initialise sub modules 
+    -name: intialise sub module 
+     run: git submodule update --init --recursive 
+
+    #step 3 setup Hugo 
+    -name: setup Hugo 
+     uses: peaceiris/actions-hugo@v2
+     with: 
+      hugo-version: '0.142.0'
+
+    #step 4       
+    name: Deploy Hugo Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master # or your desired branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Initialize submodules (if using submodules for themes)
+    - name: Initialize submodules
+      run: git submodule update --init --recursive
+
+    # Step 3: Set up Hugo
+    - name: Set up Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.142.0'
+
+    # Step 4: List the theme files to check if shortcodes are present
+    - name: List theme files
+      run: ls -l themes/hugo-brewm/layouts/shortcodes/
+
+    # Step 5: Build the Hugo site with debug information
+    - name: Build the Hugo site with debug
+      run: hugo --minify
+
+    # Step 6: Debug GITHUB_TOKEN
+    - name: Debug GITHUB_TOKEN
+      run: echo "Token is available"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Step 7: Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        publish_dir: ./public
+        github_token: ${{ secrets.GITHUB_TOKEN }}
